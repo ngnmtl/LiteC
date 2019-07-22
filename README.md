@@ -7,7 +7,7 @@ LiteC Conkyrc
 - Conky installed
 - Python 3 to execute the weather
 
-## Install
+# Install
 Download and extract the project in your system.
 Copy the content of the folder **fonts/** to the directory **~/.fonts/**
 ```shell
@@ -17,7 +17,7 @@ Copy the folder **LiteC** for the directory **~/.conky/**
 ```shell
 cp LiteC/ ~/.conky
 ```
-## Execute
+# Execute
 To run the widgets enter the commands:
 ```shell
 conky -q -c ~/.conky/LiteC/litecrc
@@ -30,5 +30,5 @@ Execute the file
 ```shell
 sh start.sh
 
-# Recomendations
+## Recomendations
 Use your graphical environment to run the file **~/.conky/LiteC/start.sh** at startup.
