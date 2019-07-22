@@ -1,0 +1,56 @@
+#Text Color
+color1 D9D9D9
+#Icons Color
+color2 C3C3C3
+#Graph Color
+color3 D9D9D9
+
+update_interval 1
+double_buffer yes
+no_buffers yes
+imlib_cache_size 10
+own_window true
+own_window_type normal
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+own_window_transparent yes
+minimum_size 330 150
+background yes
+border_inner_margin 0
+border_outer_margin 0
+alignment middle_right
+gap_x 0
+gap_y 195
+use_xft yes
+font Noto Sans:size=9
+text_buffer_size 256
+draw_shades bo
+override_utf8_locale yes
+draw_graph_borders no
+default_color FFFFFF
+
+TEXT
+${voffset 10}$color1
+${goto 20}$color2${font LineAwesomeMod :size=12}M $font$color1 ${sysname} ${kernel} - ${machine}
+${goto 20}$color2${font LineAwesomeMod :size=12}G $font$color1 Uptime: ${uptime}
+${goto 20}$color2${font LineAwesomeMod :size=12}Q $font$color1 Running Processes: ${running_processes} / ${processes} 
+${goto 20}$color2${font LineAwesomeMod :size=12}D $font$color1 Desktop: ${if_match "$desktop"!="Not running in X"}(${desktop}/${desktop_number})${endif}: ${desktop_name}
+${goto 20}$color2${font LineAwesomeMod :size=12}7 $font$color1 Threads: ${running_threads}
+${goto 20}$color2${font LineAwesomeMod :size=12}y $font$color1 Battery: ${battery BAT0} ${alignr 30}Charge: ${battery_percent BAT0}% 
+
+${goto 20}$color2${font LineAwesomeMod :size=12}g$color1 $font CPU  -  ${hwmon temp 2}°C ${alignr 30}${cpu}%
+${goto 20}$color2${font LineAwesomeMod :size=12}C$color1 $font Disk I/O ${alignr 30}${diskio}
+${goto 20}$color2${font LineAwesomeMod :size=12}p$color1 $font Load Average(1min) ${alignr 30}${loadavg 1}
+${goto 20}$color2${font LineAwesomeMod :size=12}e$color1 $font Swap Usage ${alignr 30} $swap / $swapmax
+${goto 20}$color2${font LineAwesomeMod :size=12}-$color1 $font Memory ${alignr 30}${mem} - ${memperc}%
+
+${goto 20}$color2${font LineAwesomeMod :size=12}= $font$color1 Local IP ${alignr 30}${addr wlp2s0}
+${goto 20}$color2${font LineAwesomeMod :size=12}= $font$color1 Public IP ${alignr 30}${execi 60 curl  ipinfo.io/ip}
+
+${goto 20}$color2${font LineAwesomeMod :size=12}T $font$color1 Upload Speed${alignr 30}${upspeed wlp2s0}
+${goto 20}$color2${font LineAwesomeMod :size=12}8 $font$color1 Download Speed${alignr 30}${downspeed wlp2s0}
+$color1${execi 3600 ~/.conky/weather.py}
+${goto 20}${color2}${font LineAwesomeMod :size=12}V $color1$font ${execi 60 cat ~/.cache/weather.txt | grep city | cut -d">" -f2} - ${execi 60 cat ~/.cache/weather.txt | grep country | cut -d">" -f2}
+${goto 20}${color2}${font LineAwesomeMod :size=12}O $color1$font ${execi 60 cat ~/.cache/weather.txt | grep description | cut -d">" -f2} ${alignr 30}${execi 60 cat ~/.cache/weather.txt | grep temp | cut -d">" -f2}ºC
