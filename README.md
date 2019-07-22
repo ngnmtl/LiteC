@@ -29,6 +29,7 @@ chmod +x start.sh
 Execute the file
 ```shell
 sh start.sh
+```
 
 ## Recomendations
 Use your graphical environment to run the file **~/.conky/LiteC/start.sh** at startup.
