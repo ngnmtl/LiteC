@@ -1,0 +1,2 @@
+# LiteC
+LiteC Conkyrc
